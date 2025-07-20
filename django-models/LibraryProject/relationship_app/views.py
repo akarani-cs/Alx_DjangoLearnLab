@@ -18,3 +18,4 @@ class LibraryDetailView(DetailView):
 
 # Create your views here.
 #relationship_app/list_books.html", "Book.objects.all()"
+#["relationship_app/library_detail.html"
