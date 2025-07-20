@@ -1,6 +1,8 @@
 import os
 import django
 
+#Library.objects.get(name=library_name)"
+
 # Setup Django environment
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_models.settings')
 django.setup()
