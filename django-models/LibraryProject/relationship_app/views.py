@@ -6,6 +6,8 @@ from django.contrib.auth import login
 from django.views.generic.detail import DetailView
 from .models import Library
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.decorators import user_passes_test, login_required
+
 
 
 def list_books(request):
@@ -38,6 +40,27 @@ class CustomLoginView(LoginView):
 # Logout View
 class CustomLogoutView(LogoutView):
     template_name = 'relationship_app/logout.html'
+
+
+def role_required(role):
+    def check(user):
+        return hasattr(user, 'userprofile') and user.userprofile.role == role
+    return user_passes_test(check)
+
+@login_required
+@role_required('Admin')
+def admin_view(request):
+    return render(request, 'relationship_app/admin_view.html')
+
+@login_required
+@role_required('Librarian')
+def librarian_view(request):
+    return render(request, 'relationship_app/librarian_view.html')
+
+@login_required
+@role_required('Member')
+def member_view(request):
+    return render(request, 'relationship_app/member_view.html')
 
 
 
