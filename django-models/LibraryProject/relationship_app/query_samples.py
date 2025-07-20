@@ -2,6 +2,8 @@ import os
 import django
 
 #Library.objects.get(name=library_name)"
+#"Author.objects.get(name=author_name)
+#Librarian.objects.get(name=librarian_name)
 
 # Setup Django environment
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_models.settings')
