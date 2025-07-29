@@ -139,3 +139,20 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 CSP_DEFAULT_SRC = ("'self'",)
+
+# ---------------------------
+# Cookie Security Settings
+# ---------------------------
+
+SESSION_COOKIE_SECURE = True  # Prevents session cookies over HTTP
+CSRF_COOKIE_SECURE = True     # Protects CSRF tokens
+
+
+if not DEBUG:
+# Redirect all HTTP to HTTPS
+ SECURE_SSL_REDIRECT = True  # Only enable in production behind HTTPS
+
+# HSTS: Tell browsers to only access the site via HTTPS for 1 year
+ SECURE_HSTS_SECONDS = 31536000  # 1 year in seconds
+ SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+ SECURE_HSTS_PRELOAD = True
